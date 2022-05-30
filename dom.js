@@ -18,6 +18,8 @@ console.log(document.images);
 var headerTitle=document.getElementById('header-title');
 var header=document.getElementById('main-header');
 var head=document.getElementById('items');
+
+var head1=document.getElementsByClassName('Title');
 //console.log(headerTitle);
 //headerTitle.textContent ='Hello';
 //headerTitle.innerText ='Goodbye';
@@ -25,6 +27,5 @@ var head=document.getElementById('items');
 //headerTitle.innerHTML ='<h3>Hello</h3>';
 header.style.borderBottom='solid 3px #000';
 head.style.color='green';
-head.style.color='green';
-<h3  ><i>Book a call</i></h3>
+<b>head1</b>
       
