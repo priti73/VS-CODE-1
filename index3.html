@@ -59,8 +59,14 @@ function onSubmit(e) {
   } else {
     // Create new list item with user
     const li = document.createElement('li');
-    localStorage.setItem('Name',nameInput.value);
-    localStorage.setItem('Emai id',emailInput.value);
+    let obj={
+                nameInput:nameInput.value,
+                emailInput:emailInput.value
+    }
+     let myobj=JSON.stringify(obj);
+
+    localStorage.setItem('userdetails',JSON.stringify(obj));
+    //localStorage.setItem('emailInput',emailInput_serialized);
         // Append to ul
     userList.appendChild(li);
     // Clear fields
