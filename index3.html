@@ -38,7 +38,7 @@
     <ul id='listofusers'></ul>
 
     <script >
-  const myForm = document.querySelector('#my-form');
+      const myForm = document.querySelector('#my-form');
 const nameInput = document.querySelector('#name');
 const emailInput = document.querySelector('#email');
 const msg = document.querySelector('.msg');
@@ -66,7 +66,7 @@ function onSubmit(e) {
      let myobj=JSON.stringify(obj);
 
     localStorage.setItem(obj.emailInput,JSON.stringify(obj));
-    shownewuseronscreen(obj)
+    showNewUserOnScreen(obj)
     document.addEventListener("DOMContentLoaded", () => {
     console.log("vscode");
     localStorage.getItem();
@@ -94,6 +94,7 @@ function onSubmit(e) {
     }
   });
 }
+  
     // Append to ul
        
     userList.appendChild(li);
@@ -101,17 +102,41 @@ function onSubmit(e) {
     nameInput.value = '';
     emailInput.value = '';
 }
-function shownewuseronscreen(user){
-    const parentNode=document.getElementById('listofusers');
-    const childHTML=`<li>${user.nameInput} -${user.emailInput}</li>`
-    parentNode.innerHTML=parentNode.innerHTML+childHTML;
 }
+function showNewUserOnScreen(user){
+ // if(localStorage.getItem(user.emailInput) !== null){
+   //   removeuserfromscreen(user.emailInput)
+  //  }
+                const parentNode = document.getElementById('listofusers');
+                const childHTML = `<li id=${user.emailInput}> ${user.nameInput} - ${user.emailInput}
+                                        <button onclick=deleteUser('${user.emailInput}')> Delete User </button>
+                                        <button onclick=editUserDetails('${user.emailInput}','${user.nameInput}')>Edit User </button>
+                                     
+                                     </li>`
+
+                parentNode.innerHTML = parentNode.innerHTML + childHTML;
+            }
+function editUserDetails(emailInput, nameInput){
+document.getElementById('email').value = emailInput;
+document.getElementById('username').value = nameInput;
+deleteUser(emailInput)
 }
-    /*document.addEventListener("DOMContentLoaded", () => {
-    console.log("vscode");
-    localStorage.getItem();
-    });*/
-        // Append to ul
-       </script>
+
+ // deleteUser('abc@gmail.com')
+
+ function deleteUser(emailInput){
+  console.log(emailInput)
+ localStorage.removeItem(emailInput);
+removeuserfromscreen(emailInput);
+ }
+  function removeuserfromscreen(emailInput){
+   const parentNode = document.getElementById('listofusers');
+   const childNodeToBeDeleted = document.getElementById(emailInput);
+   //if( childNodetobedeleted){
+   parentNode.removeChild(childNodeToBeDeleted)
+          //  }
+        }
+      
+    </script> >
   </body>
 </html>
